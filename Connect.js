@@ -6,6 +6,12 @@
 // @grant       none
 // ==/UserScript==
 
+for(var x = 0; x < 5000; x += 500){
+  setTimeout(function(){
+      window.scrollTo(0,document.body.scrollHeight);
+  }, x);
+}
+
 setTimeout(function() {
   var accounts = $("button:contains(Connect)");
   var x = 0;
@@ -43,4 +49,4 @@ setTimeout(function() {
   }
 
   begin();
-}, 5000);
+}, 6000);

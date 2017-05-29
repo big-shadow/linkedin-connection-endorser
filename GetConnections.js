@@ -1,4 +1,4 @@
-for(var x = 0; x < 59000; x += 500){
+for(var x = 0; x < 89000; x += 500){
   setTimeout(function(){
       window.scrollTo(0,document.body.scrollHeight);
   }, x);
@@ -10,4 +10,4 @@ setTimeout(function(){
         console.log(e.href);
     }
   });
-}, 60000);
+}, 90000);
