@@ -6,47 +6,49 @@
 // @grant       none
 // ==/UserScript==
 
-for(var x = 0; x < 5000; x += 500){
-  setTimeout(function(){
-      window.scrollTo(0,document.body.scrollHeight);
-  }, x);
+for(var x = 0; x < 10000; x += 1000){
+    setTimeout(() => window.scrollTo(0, document.body.scrollHeight), x);
 }
 
-setTimeout(function() {
-  var accounts = $("button:contains(Connect)");
-  var x = 0;
+var x = 0;
 
-  function begin() {
-    if(x == accounts.length){
-      console.log("Complete.");
-      return;
-    }
+// Initial injection point.
+setTimeout(() => {
+    var accounts = $("button:contains(Connect)");
+    console.log(`Scraped ${accounts.length} button(s).`);
 
-    setTimeout(function() {
-      connect(x);
-      x++;
-    }, 1000);
-  }
-
-  function connect(number) {
-    var account = accounts[number];
-
-    if(account != undefined){
-      account.click();
-    }
-
-    setTimeout(function() {
-        var button = $("button:contains(Send now)");
-
-        if(button != undefined){
-          button.click();
+    function begin() {
+        if(x == accounts.length){
+            console.log("Complete.");
+            return;
         }
-    }, 500);
 
-    setTimeout(function() {
-        begin();
-    }, 750);
-  }
+        setTimeout(() => {
+            connect(x);
+            x++;
+        }, 1750);
+    }
 
-  begin();
-}, 6000);
+    function connect(number) {
+        var account = accounts[number];
+
+        if(account != undefined){
+            account.click();
+	    console.log(`Clicked button #${number}.`);
+        }
+
+        setTimeout(() => {
+            var button = $("button:contains(Send now)");
+
+            if(button != undefined){
+                button.click();
+	        console.log(`Confirmed button #${number}.`);
+            }
+
+            // Re-iterate.
+            setTimeout(begin, 750);
+        }, 500);
+    }
+
+    begin();
+}, 12500);
