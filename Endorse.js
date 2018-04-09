@@ -10,7 +10,7 @@ setTimeout(() => {
     for(var x = 0; x < 9000; x += 1000){
         setTimeout(() => {window.scrollTo(0,document.body.scrollHeight);}, x);
     }
-}, 15000);
+}, 5000);
 
 setTimeout(() => {
     $("button[data-control-name='skill_details']").click();
@@ -18,4 +18,4 @@ setTimeout(() => {
           if(x < 40){$(e).click();}
           else {return;}
     });
-}, 20000);
+}, 15000);
