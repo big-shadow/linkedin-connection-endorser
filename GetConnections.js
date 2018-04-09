@@ -5,5 +5,5 @@ for(var x = 0; x < 89000; x += 500){
 }
 
 setTimeout(() => {
-    $(".mn-person-info__link").each((x, e) => console.log(e.href))
+    $(".mn-connection-card__link").each((x, e) => console.log(e.href))
 }, 90000);
